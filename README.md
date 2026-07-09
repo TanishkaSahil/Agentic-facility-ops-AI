@@ -146,11 +146,11 @@ No additional installation is required.
 
 ##  Project Members
 
-Tanishka Sahil
-Simran Dey
-Preethi S
-Rakshnavi P
-Veera Lakshmi Malladi
+~Tanishka Sahil
+ ~Simran Dey
+ ~Preethi S
+ ~Rakshnavi P
+ ~Veera Lakshmi Malladi
 
 
 ## 📚 Learning Outcomes
