@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Agent Modules - OpsAgent</title>
+  <meta name="description" content="Manage and monitor autonomous AI agents working together to optimize your facility operations.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+  <div class="dashboard-wrapper flex">
+    <!-- Left Sidebar -->
+    <aside class="sidebar flex flex-col" id="sidebar">
+      <div class="sidebar-header flex align-center">
+        <svg class="sidebar-logo" viewBox="0 0 40 40" width="30" height="30" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2L38 11V31L20 38L2 31V11L20 2Z" stroke="#3b82f6" stroke-width="3" stroke-linejoin="round"/>
+          <path d="M20 10L29 15V26L20 30L11 26V15L20 10Z" fill="#3b82f6"/>
+        </svg>
+        <div class="logo-title-group">
+          <h2>Agentic</h2>
+          <h1>Facility Ops AI</h1>
+          <span>PLATFORM</span>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <ul>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Overview</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
+              <span>Dashboard</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="10" r="3"/><path d="M7 17c0-2 4-3 5-3s5 1 5 3"/></svg>
+              <span>AI Agents</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item active">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span>Modules</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <span>Work Orders</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M21 12H3M12 3v18"/></svg>
+              <span>Assets</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <span>Monitoring</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+              <span>Analytics</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              <span>Reports</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+              <span>Alerts</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+              <span>Schedules</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+              <span>Integrations</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="nav-item">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+              <span>Settings</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Sidebar Footer Extra Card -->
+      <div class="sidebar-assistant">
+        <div class="assistant-title flex align-center">
+          <div class="assistant-avatar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#6366f1" stroke-width="2"><path d="M12 2a10 10 0 0 0-10 10c0 5.523 4.477 10 10 10s10-4.477 10-10A10 10 0 0 0 12 2zm0 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span class="status-indicator"></span>
+          </div>
+          <div>
+            <h4>AI Assistant</h4>
+            <span class="online-status">Online</span>
+          </div>
+        </div>
+        <p>Ask anything about your facility operations...</p>
+        <button class="btn btn-assistant flex justify-between align-center" id="ask-ai-btn">
+          <span>Ask AI</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+
+      <!-- User Info Footer -->
+      <div class="sidebar-user flex align-center justify-between">
+        <div class="flex align-center gap-2">
+          <div class="user-avatar flex align-center justify-center">TS</div>
+          <div class="user-info">
+            <h4>Tanishka Sahil</h4>
+            <span>Facility Manager</span>
+          </div>
+        </div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+
+      <div class="logout-wrapper">
+        <a href="index.html" class="logout-link flex align-center gap-2" id="logout-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Container -->
+    <div class="main-content flex flex-col">
+      <!-- Navbar / Top Header -->
+      <header class="navbar flex align-center justify-between">
+        <div class="flex align-center gap-4">
+          <button class="hamburger-menu" id="hamburger-btn" aria-label="Toggle Sidebar">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          
+          <!-- Search Bar -->
+          <div class="search-bar flex align-center">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" placeholder="Search for assets, work orders, tickets...">
+            <span class="search-shortcut">⌘ K</span>
+          </div>
+        </div>
+
+        <!-- Right Side Nav Actions -->
+        <div class="nav-actions flex align-center gap-4">
+          <!-- Notification Bell -->
+          <button class="icon-btn-badge" id="notification-btn" aria-label="Notifications">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <span class="badge">8</span>
+          </button>
+
+          <!-- Help Button -->
+          <button class="icon-btn" aria-label="Help">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </button>
+
+          <span class="divider-v"></span>
+
+          <!-- Location Selector Dropdown -->
+          <div class="location-dropdown" id="location-dd">
+            <button class="dropdown-trigger flex align-center gap-2">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2" ry="2"/><line x1="9" y1="22" x2="9" y2="16"/><line x1="15" y1="22" x2="15" y2="16"/><line x1="9" y1="16" x2="15" y2="16"/></svg>
+              <span>Head Office</span>
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="dropdown-menu">
+              <a href="#">Head Office</a>
+              <a href="#">Regional Office East</a>
+              <a href="#">Warehouse A</a>
+              <a href="#">Data Center</a>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <!-- Main Workspace Scrollable -->
+      <main class="workspace-viewport">
+        <!-- Page Title & CTA Row -->
+        <div class="workspace-header flex justify-between align-center">
+          <div class="header-text">
+            <h2>AI Agent Modules</h2>
+            <p>Autonomous AI agents working together to optimize your facility operations.</p>
+          </div>
+          <button class="btn btn-primary" id="add-module-btn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            Add New Module
+          </button>
+        </div>
+
+        <!-- Summary Statistics Grid -->
+        <section class="summary-grid grid">
+          <!-- Stat 1 -->
+          <div class="stat-card flex justify-between align-center">
+            <div class="stat-info">
+              <span class="stat-value" id="val-modules">4</span>
+              <span class="stat-label">Active Modules</span>
+              <span class="stat-sub">running smoothly</span>
+            </div>
+            <div class="stat-icon-wrapper blue-light-bg flex-col align-center justify-center">
+              <svg class="text-blue" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              <span class="badge-mini check-badge">
+                <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+          </div>
+
+          <!-- Stat 2 -->
+          <div class="stat-card flex justify-between align-center">
+            <div class="stat-info">
+              <span class="stat-value" id="val-eff">12.4%</span>
+              <span class="stat-label">Avg. Efficiency Gain</span>
+              <span class="stat-sub">this month</span>
+            </div>
+            <div class="stat-icon-wrapper green-light-bg flex-col align-center justify-center">
+              <svg class="text-green" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+            </div>
+          </div>
+
+          <!-- Stat 3 -->
+          <div class="stat-card flex justify-between align-center">
+            <div class="stat-info">
+              <span class="stat-value" id="val-energy">18.7%</span>
+              <span class="stat-label">Energy Savings</span>
+              <span class="stat-sub">this month</span>
+            </div>
+            <div class="stat-icon-wrapper orange-light-bg flex-col align-center justify-center">
+              <svg class="text-orange" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            </div>
+          </div>
+
+          <!-- Stat 4 -->
+          <div class="stat-card flex justify-between align-center">
+            <div class="stat-info">
+              <span class="stat-value" id="val-cost">₹2.45L</span>
+              <span class="stat-label">Cost Savings</span>
+              <span class="stat-sub">this month</span>
+            </div>
+            <div class="stat-icon-wrapper purple-light-bg flex-col align-center justify-center">
+              <span class="rupee-symbol text-purple">₹</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Filters and View Controls -->
+        <section class="filters-row flex align-center justify-between">
+          <div class="tabs flex gap-2">
+            <button class="tab-btn active" data-filter="all">All Modules</button>
+            <button class="tab-btn" data-filter="operations">Operations</button>
+            <button class="tab-btn" data-filter="maintenance">Maintenance</button>
+            <button class="tab-btn" data-filter="sustainability">Sustainability</button>
+            <button class="tab-btn" data-filter="security">Security</button>
+          </div>
+          <div class="view-toggles flex gap-2">
+            <button class="toggle-btn" id="grid-view-btn" aria-label="Grid View">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </button>
+            <button class="toggle-btn active" id="list-view-btn" aria-label="List View">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </button>
+          </div>
+        </section>
+
+        <!-- Agent Modules Collection Container -->
+        <section class="modules-collection list-layout" id="modules-container">
+          <!-- Card 1: Energy Agent (Sustainability) -->
+          <div class="agent-card active-card" data-category="sustainability" id="card-energy">
+            <div class="agent-summary flex align-center">
+              <div class="agent-icon-col">
+                <div class="agent-avatar-circle green-glow">
+                  <svg class="text-green" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                </div>
+                <span class="status-badge active-badge">Active</span>
+              </div>
+              
+              <div class="agent-info-col">
+                <div class="title-row flex align-center justify-between">
+                  <h3>1. Energy Agent</h3>
+                  <span class="card-status-dot flex align-center gap-1">
+                    <span class="running-pulse green-pulse"></span>
+                    Running
+                  </span>
+                </div>
+                <p class="description">Monitors and optimizes energy and utility consumption across facilities using AI insights.</p>
+                <ul class="features-list grid">
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-green"><polyline points="20 6 9 17 4 12"/></svg> Energy Monitoring</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-green"><polyline points="20 6 9 17 4 12"/></svg> HVAC Optimization</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-green"><polyline points="20 6 9 17 4 12"/></svg> Lighting Optimization</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-green"><polyline points="20 6 9 17 4 12"/></svg> Demand Forecasting</li>
+                </ul>
+              </div>
+
+              <div class="agent-metrics-col">
+                <span class="metrics-heading">This Month</span>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value text-green">12.4%</span>
+                  <span class="metric-desc">Energy Savings</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">₹1.25L</span>
+                  <span class="metric-desc">Cost Savings</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">98%</span>
+                  <span class="metric-desc">Forecast Accuracy</span>
+                </div>
+              </div>
+
+              <div class="agent-chart-col">
+                <svg class="sparkline-chart" viewBox="0 0 100 40">
+                  <defs>
+                    <linearGradient id="chart-grad-green" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#10b981" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#10b981" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 30 Q 15 10, 30 25 T 60 15 T 80 28 T 100 12 L 100 40 L 0 40 Z" fill="url(#chart-grad-green)" />
+                  <path d="M 0 30 Q 15 10, 30 25 T 60 15 T 80 28 T 100 12" fill="none" stroke="#10b981" stroke-width="2" />
+                  <circle cx="100" cy="12" r="3" fill="#10b981" />
+                </svg>
+              </div>
+
+              <div class="agent-actions-col flex align-center gap-2">
+                <button class="btn btn-secondary btn-detail" data-agent="Energy Agent">View Details</button>
+                <button class="icon-menu-btn" aria-label="More Options">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Maintenance Agent (Maintenance) -->
+          <div class="agent-card active-card" data-category="maintenance" id="card-maintenance">
+            <div class="agent-summary flex align-center">
+              <div class="agent-icon-col">
+                <div class="agent-avatar-circle blue-glow">
+                  <svg class="text-blue" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+                </div>
+                <span class="status-badge active-badge">Active</span>
+              </div>
+              
+              <div class="agent-info-col">
+                <div class="title-row flex align-center justify-between">
+                  <h3>2. Maintenance Agent</h3>
+                  <span class="card-status-dot flex align-center gap-1">
+                    <span class="running-pulse green-pulse"></span>
+                    Running
+                  </span>
+                </div>
+                <p class="description">Predicts equipment failures and automates maintenance workflows.</p>
+                <ul class="features-list grid">
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-blue"><polyline points="20 6 9 17 4 12"/></svg> Equipment Health</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-blue"><polyline points="20 6 9 17 4 12"/></svg> Predictive Maintenance</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-blue"><polyline points="20 6 9 17 4 12"/></svg> Work Order Generation</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-blue"><polyline points="20 6 9 17 4 12"/></svg> Downtime Reduction</li>
+                </ul>
+              </div>
+
+              <div class="agent-metrics-col">
+                <span class="metrics-heading">This Month</span>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value text-blue">92%</span>
+                  <span class="metric-desc">MTBF Improvement</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">156</span>
+                  <span class="metric-desc">Work Orders Closed</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">23%</span>
+                  <span class="metric-desc">Downtime Reduced</span>
+                </div>
+              </div>
+
+              <div class="agent-chart-col">
+                <div class="bar-chart flex align-end justify-between">
+                  <div class="bar" style="height: 40%"></div>
+                  <div class="bar" style="height: 65%"></div>
+                  <div class="bar" style="height: 35%"></div>
+                  <div class="bar" style="height: 80%"></div>
+                  <div class="bar" style="height: 55%"></div>
+                  <div class="bar" style="height: 90%"></div>
+                  <div class="bar" style="height: 70%"></div>
+                </div>
+              </div>
+
+              <div class="agent-actions-col flex align-center gap-2">
+                <button class="btn btn-secondary btn-detail" data-agent="Maintenance Agent">View Details</button>
+                <button class="icon-menu-btn" aria-label="More Options">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Occupancy Agent (Operations) -->
+          <div class="agent-card active-card" data-category="operations" id="card-occupancy">
+            <div class="agent-summary flex align-center">
+              <div class="agent-icon-col">
+                <div class="agent-avatar-circle orange-glow">
+                  <svg class="text-orange" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </div>
+                <span class="status-badge active-badge">Active</span>
+              </div>
+              
+              <div class="agent-info-col">
+                <div class="title-row flex align-center justify-between">
+                  <h3>3. Occupancy Agent</h3>
+                  <span class="card-status-dot flex align-center gap-1">
+                    <span class="running-pulse green-pulse"></span>
+                    Running
+                  </span>
+                </div>
+                <p class="description">Analyzes space utilization and optimizes occupancy and workspace allocation.</p>
+                <ul class="features-list grid">
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-orange"><polyline points="20 6 9 17 4 12"/></svg> Space Utilization</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-orange"><polyline points="20 6 9 17 4 12"/></svg> Occupancy Heatmaps</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-orange"><polyline points="20 6 9 17 4 12"/></svg> Workspace Optimization</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-orange"><polyline points="20 6 9 17 4 12"/></svg> Usage Forecasting</li>
+                </ul>
+              </div>
+
+              <div class="agent-metrics-col">
+                <span class="metrics-heading">This Month</span>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value text-orange">65%</span>
+                  <span class="metric-desc">Avg. Space Util.</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">18%</span>
+                  <span class="metric-desc">Space Optimization</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">85%</span>
+                  <span class="metric-desc">Forecast Accuracy</span>
+                </div>
+              </div>
+
+              <div class="agent-chart-col">
+                <svg class="sparkline-chart" viewBox="0 0 100 40">
+                  <defs>
+                    <linearGradient id="chart-grad-orange" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 32 Q 25 35, 50 18 T 80 14 T 100 24 L 100 40 L 0 40 Z" fill="url(#chart-grad-orange)" />
+                  <path d="M 0 32 Q 25 35, 50 18 T 80 14 T 100 24" fill="none" stroke="#f59e0b" stroke-width="2" />
+                  <circle cx="100" cy="24" r="3" fill="#f59e0b" />
+                </svg>
+              </div>
+
+              <div class="agent-actions-col flex align-center gap-2">
+                <button class="btn btn-secondary btn-detail" data-agent="Occupancy Agent">View Details</button>
+                <button class="icon-menu-btn" aria-label="More Options">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Security Agent (Security) -->
+          <div class="agent-card active-card" data-category="security" id="card-security">
+            <div class="agent-summary flex align-center">
+              <div class="agent-icon-col">
+                <div class="agent-avatar-circle purple-glow">
+                  <svg class="text-purple" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                </div>
+                <span class="status-badge active-badge">Active</span>
+              </div>
+              
+              <div class="agent-info-col">
+                <div class="title-row flex align-center justify-between">
+                  <h3>4. Security Agent</h3>
+                  <span class="card-status-dot flex align-center gap-1">
+                    <span class="running-pulse green-pulse"></span>
+                    Running
+                  </span>
+                </div>
+                <p class="description">Monitors security systems and detects anomalies to ensure a safe environment.</p>
+                <ul class="features-list grid">
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-purple"><polyline points="20 6 9 17 4 12"/></svg> Access Control</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-purple"><polyline points="20 6 9 17 4 12"/></svg> Anomaly Detection</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-purple"><polyline points="20 6 9 17 4 12"/></svg> Incident Alerts</li>
+                  <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" class="text-purple"><polyline points="20 6 9 17 4 12"/></svg> Video Analytics</li>
+                </ul>
+              </div>
+
+              <div class="agent-metrics-col">
+                <span class="metrics-heading">This Month</span>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value text-purple">120</span>
+                  <span class="metric-desc">Security Events</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">98.6%</span>
+                  <span class="metric-desc">Threat Detection</span>
+                </div>
+                <div class="metric-row flex justify-between">
+                  <span class="metric-value font-dark">15</span>
+                  <span class="metric-desc">Incidents Resolved</span>
+                </div>
+              </div>
+
+              <div class="agent-chart-col">
+                <svg class="sparkline-chart" viewBox="0 0 100 40">
+                  <defs>
+                    <linearGradient id="chart-grad-purple" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.3" />
+                      <stop offset="100%" stop-color="#8b5cf6" stop-opacity="0.0" />
+                    </linearGradient>
+                  </defs>
+                  <path d="M 0 35 Q 20 28, 40 32 T 70 12 T 100 20 L 100 40 L 0 40 Z" fill="url(#chart-grad-purple)" />
+                  <path d="M 0 35 Q 20 28, 40 32 T 70 12 T 100 20" fill="none" stroke="#8b5cf6" stroke-width="2" />
+                  <circle cx="100" cy="20" r="3" fill="#8b5cf6" />
+                </svg>
+              </div>
+
+              <div class="agent-actions-col flex align-center gap-2">
+                <button class="btn btn-secondary btn-detail" data-agent="Security Agent">View Details</button>
+                <button class="icon-menu-btn" aria-label="More Options">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="1"/><circle cx="12" cy="5" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dynamic Collaboration Footer Workflow -->
+        <footer class="collaboration-footer flex align-center justify-between">
+          <div class="collab-text">
+            <h3>AI Agents Working Together</h3>
+            <p>Our agents collaborate autonomously to deliver smarter, safer, and more efficient facilities.</p>
+            <button class="btn btn-secondary btn-sm" id="view-flow-btn">View Orchestration Flow</button>
+          </div>
+          <div class="collab-flow flex align-center gap-4">
+            <!-- Node 1 -->
+            <div class="flow-node flex flex-col align-center gap-1">
+              <div class="node-icon-bg green-glow-hover flex align-center justify-center">
+                <svg class="text-green" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              </div>
+              <span class="node-name">Energy Agent</span>
+            </div>
+            <!-- Arrow -->
+            <svg class="flow-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <!-- Node 2 -->
+            <div class="flow-node flex flex-col align-center gap-1">
+              <div class="node-icon-bg blue-glow-hover flex align-center justify-center">
+                <svg class="text-blue" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+              </div>
+              <span class="node-name">Maintenance Agent</span>
+            </div>
+            <!-- Arrow -->
+            <svg class="flow-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <!-- Node 3 -->
+            <div class="flow-node flex flex-col align-center gap-1">
+              <div class="node-icon-bg orange-glow-hover flex align-center justify-center">
+                <svg class="text-orange" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <span class="node-name">Occupancy Agent</span>
+            </div>
+            <!-- Arrow -->
+            <svg class="flow-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg>
+            <!-- Node 4 -->
+            <div class="flow-node flex flex-col align-center gap-1">
+              <div class="node-icon-bg purple-glow-hover flex align-center justify-center">
+                <svg class="text-purple" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              </div>
+              <span class="node-name">Security Agent</span>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </div>
+  </div>
+
+  <!-- Dialog / Modals Layout -->
+  <!-- View Detail Modal -->
+  <div class="modal-overlay" id="detail-modal">
+    <div class="modal-card">
+      <div class="modal-header flex justify-between align-center">
+        <h3 id="modal-agent-title">Agent Detail</h3>
+        <button class="modal-close" id="detail-modal-close" aria-label="Close modal">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="modal-metrics-container grid">
+          <div class="modal-metric">
+            <span class="m-lbl">Current Load</span>
+            <span class="m-val">Normal</span>
+          </div>
+          <div class="modal-metric">
+            <span class="m-lbl">Uptime</span>
+            <span class="m-val">99.98%</span>
+          </div>
+          <div class="modal-metric">
+            <span class="m-lbl">Alerts (24h)</span>
+            <span class="m-val">0</span>
+          </div>
+        </div>
+        <p class="modal-desc-text" id="modal-agent-desc">Agent operations details showing analytics logs.</p>
+        <div class="console-box">
+          <div class="console-header flex justify-between">
+            <span>Live Diagnostics Console</span>
+            <span class="blinking-dot">● Live</span>
+          </div>
+          <pre class="console-content" id="console-logs">Connecting to AI agent subsystem...</pre>
+        </div>
+      </div>
+      <div class="modal-footer flex justify-between">
+        <button class="btn btn-secondary btn-modal-action" id="pause-agent-btn">Pause Agent</button>
+        <button class="btn btn-primary btn-modal-action" id="modal-ok-btn">Close Diagnostics</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Add New Module Modal -->
+  <div class="modal-overlay" id="add-modal">
+    <div class="modal-card">
+      <div class="modal-header flex justify-between align-center">
+        <h3>Create New AI Agent Module</h3>
+        <button class="modal-close" id="add-modal-close">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form id="new-agent-form">
+          <div class="form-group flex flex-col gap-1">
+            <label for="new-agent-name">Agent Name</label>
+            <input type="text" id="new-agent-name" placeholder="e.g. Asset Integrity Agent" required>
+          </div>
+          <div class="form-group flex flex-col gap-1">
+            <label for="new-agent-desc">Description</label>
+            <textarea id="new-agent-desc" rows="3" placeholder="Describe the role of the AI agent..." required></textarea>
+          </div>
+          <div class="form-group flex flex-col gap-1">
+            <label for="new-agent-cat">Category / Domain</label>
+            <select id="new-agent-cat">
+              <option value="operations">Operations</option>
+              <option value="maintenance">Maintenance</option>
+              <option value="sustainability">Sustainability</option>
+              <option value="security">Security</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer flex justify-between">
+        <button class="btn btn-secondary" id="add-modal-cancel">Cancel</button>
+        <button type="submit" form="new-agent-form" class="btn btn-primary">Deploy Agent</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>
